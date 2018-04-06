@@ -1,0 +1,24 @@
+.job-info {
+	border: 1px solid #6f6f6f;
+	margin-bottom: 24px;
+	cursor: pointer;
+	h4 {
+		padding: 0;
+		margin: 0;
+	}
+	display: flex;
+	.job-cloumn {
+		max-width: 800px;
+		display: flex;
+		flex-direction: column;
+		.job-line {
+			display: flex;
+			justify-content: space-between;
+			.job-item {
+				display: flex;
+				flex-direction: column;
+				padding: 6px 16px;
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+<div class="drivers-wrapper">
+	<div>
+		<div *ngFor="let driver of drivers; let i = index" class="driver-list">
+			<app-driver [driver]="driver" [key]="i"></app-driver>
+		</div>
+	</div>
+	<router-outlet></router-outlet>
+</div>

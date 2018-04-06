@@ -1,0 +1,122 @@
+<div class="job-details-wrapper">
+	<div class="job-content">
+		<div class="main-details">
+			<div>
+				<h3>Customer information</h3>
+				<div class="job-details">
+					<div class="job-row">
+						<span>Name: </span>
+						<span>{{currentDriver.name}}</span>
+					</div>
+					<div class="job-row">
+						<span>Phone: </span>
+						<span>[masked]</span>
+					</div>
+					<div class="job-row">
+						<span>Alt Phone: </span>
+						<span>832-247-0101</span>
+					</div>
+					<div class="job-row">
+						<span>From: </span>
+						<span *ngIf="currentJob.from.showed then hideFrom else showFrom"></span>
+						<ng-template #hideFrom >
+							<span>{{currentJob.from.title}}</span>
+						</ng-template>
+						<ng-template #showFrom>
+							<span><a href="javascript:void(0);" (click)="showDialog = !showDialog">Click to view addres</a></span>
+						</ng-template>
+					</div>
+					<div class="job-row">
+						<span>To: </span>
+						<span *ngIf="currentJob.to.showed then hideTo else showTo"></span>
+						<ng-template #hideTo >
+							<span>{{currentJob.to.title}}</span>
+						</ng-template>
+						<ng-template #showTo>
+							<span><a href="javascript:void(0);" (click)="showDialog = !showDialog">Click to view addres</a></span>
+						</ng-template>
+					</div>
+				</div>
+			</div>
+			<div>
+				<h3>Job information</h3>
+				<div class="job-details">
+					<div class="job-row">
+						<span>Dispatch Date:</span>
+						<span>{{currentJob.dispatchDate}}</span>
+					</div>
+					<div class="job-row">
+						<span>Move confirmed:</span>
+						<span> {{currentJob.confirmed}}</span>
+					</div>
+					<div class="job-row">
+						<span>Trip Fee:</span>
+						<span> $125.00</span>
+					</div>
+					<div class="job-row">
+						<span>Hourly Rate:</span>
+						<span>$159.00</span>
+					</div>
+					<div class="job-row">
+						<span>Start Time: </span>
+						<span>12:00PM</span>
+					</div>
+					<div class="job-row">
+						<span>End Time:</span>
+						<span></span>
+					</div>
+					<div class="job-row">
+						<span>Payment Rec'd:</span>
+						<span>$0.00 </span>
+					</div>
+					<div class="job-row">
+						<span>Notes:</span>
+						<span> {{currentJob.notes}} </span>
+					</div>
+					<div class="job-row">
+						<span>Driver Notes: </span>
+						<textarea name="text" id="notes" cols="30" rows="10"></textarea>
+					</div>
+				</div>
+			</div>
+			<div>
+				<h3>Stop information</h3>
+				<div>
+					<div class="job-details">
+						<div class="job-row">
+							<span>Stop 1 Address:</span>
+							<div *ngIf="currentJob.from.showed then truthyStop1Template else falsyStop1Template"></div>
+							<ng-template #truthyStop1Template >
+								<span>{{currentJob.from.title}}</span>
+							</ng-template>
+							<ng-template #falsyStop1Template>
+								<span><a href="javascript:void(0);" (click)="showDialog = !showDialog">Click to view addres</a></span>
+							</ng-template>
+						</div>
+						<div class="job-row">
+							<span>Stop 2 Address: </span>
+							<div *ngIf="currentJob.to.showed then truthyStop2Template else falsyStop2Template"></div>
+							<ng-template #truthyStop2Template >
+								<span>{{currentJob.to.title}}</span>
+							</ng-template>
+							<ng-template #falsyStop2Template>
+								<span><a href="javascript:void(0);" (click)="showDialog = !showDialog">Click to view addres</a></span>
+							</ng-template>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="map"></div>
+	</div>
+	<div class="job-content">
+		<h3>Forms</h3>
+		<ul class="myway-ul">
+			<li (click)="showAdress()">Oh My Way!</li>
+		</ul>
+	</div>
+</div>
+<app-dialog [(visible)]="showDialog">
+	<h3>Address will be available once you press On My Way</h3>
+	<button (click)="showDialog = !showDialog" class="btn">Close</button>
+</app-dialog>

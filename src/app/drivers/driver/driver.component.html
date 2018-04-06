@@ -1,0 +1,15 @@
+<div class="driver-cart">
+	<div class="driver">
+		<img src="../../../assets/images/drivers/noavatar.jpg">
+		<div class="driver-info">
+			<span>ID: {{driver.id}}</span>
+			<span>Name: {{driver.name}}</span>
+			<span>Email: {{driver.email}}</span>
+			<span>Phone: {{driver.phone}}</span>
+		</div>
+	</div>
+	<div class="driver jobs-list">
+		<h4>Today's Jobs - {{driver.jobs.length}}</h4>
+		<driver-job *ngFor="let jobs of driver.jobs; let i = index" [jobs]="jobs" (click)="seeJobDetails(driver, jobs.id, key, i)"></driver-job>
+	</div>
+</div>
